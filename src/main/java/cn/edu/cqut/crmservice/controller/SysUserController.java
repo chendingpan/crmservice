@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * <p>
@@ -27,6 +28,8 @@ import java.util.Arrays;
 public class SysUserController {
     @Autowired  //自动从spring容器中获取对象给变量赋值
     private ISysUserService userService;
+    @Autowired
+    private ISysUserService sysUserService;
     @Autowired
     private JWTUtill jwtUtill;
 
@@ -98,5 +101,12 @@ public class SysUserController {
         userUpdateWrapper.eq("user_id", sysUser.getUserId());
         userService.update(userUpdateWrapper);
         return TableResult.ok("修改用户状态成功");
+    }
+
+    @PostMapping("/getAllSysUser")
+    public List<SysUser> getAllSysUser() {
+        QueryWrapper<SysUser> wrapper = new QueryWrapper<>();
+        wrapper.eq("role_id", "1").select("user_id", "user_name");
+        return sysUserService.list(wrapper);
     }
 }
