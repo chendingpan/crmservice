@@ -25,6 +25,7 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
     @Override
     public List<Report> getCustomerContribution() {
         return baseMapper.getCustomerContribution();
+
     }
 
     @Override

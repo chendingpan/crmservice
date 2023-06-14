@@ -17,8 +17,16 @@ import java.util.List;
  * @since 2023-06-09
  */
 public interface CustomerMapper extends BaseMapper<Customer> {
-    @Select("SELECT customer.cus_id, customer.cus_name name, SUM(orders.odr_amount) AS total_amount FROM customer INNER JOIN orders ON customer.cus_id = orders.cus_id GROUP BY customer.cus_id;")
+
+    @Select("SELECT customer.cus_id, customer.cus_name item, SUM(orders.odr_amount) AS value " +
+            "FROM customer " +
+            "INNER JOIN orders ON customer.cus_id = orders.cus_id " +
+            "GROUP BY customer.cus_id")
     public List<Report> getCustomerContribution();
+
+//    @Select("SELECT customer.cus_id, customer.cus_name name, SUM(orders.odr_amount) AS total_amount FROM customer INNER JOIN orders ON customer.cus_id = orders.cus_id GROUP BY customer.cus_id;")
+//    public List<Report> getCustomerContribution();
+
 
     @Select("select count(*) value, cus_level item from customer GROUP BY cus_level")
     public List<Report> getCustomerCountByLevel();

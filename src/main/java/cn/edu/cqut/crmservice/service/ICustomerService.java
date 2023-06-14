@@ -20,6 +20,7 @@ public interface ICustomerService extends IService<Customer> {
 
     public List<Report> getCustomerContribution();
 
+
     public List<Report> getCustomerCountByLevel();
 
 

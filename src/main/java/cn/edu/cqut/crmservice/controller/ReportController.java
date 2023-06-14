@@ -28,6 +28,7 @@ public class ReportController {
     public ReportResult getCustomerContribution(){
         List<Report> reports = customerService.getCustomerContribution();
         return getReportResult(reports);
+
     }
 
 //    @GetMapping("/getContributionInfo")
