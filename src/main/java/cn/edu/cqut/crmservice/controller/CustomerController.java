@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -56,6 +58,8 @@ public class CustomerController {
         customerService.removeByIds(Arrays.asList(ids)); //asList()把数组转list
         return TableResult.ok("删除客户信息成功");
     }
+
+
 
     @Scheduled(cron = "0 0 2 * * *")//秒 分 时 月份中的日期 月 年
     public void job(){
